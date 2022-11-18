@@ -12,16 +12,16 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/web">New Page</a>
+                    <Link class="nav-link" href="/web">New Page</Link>
                 </li>
                 <li class="nav-item">
-                <Link class="nav-link" href="/about">About</Link>
+                    <Link class="nav-link" href="/about">About</Link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/post">Posts</a>
+                    <Link class="nav-link" href="/users">Customers</Link>
                 </li>
                 <li class="nav-item">
-                <Link class="nav-link" href="/web">Disabled</Link>
+                    <Link class="nav-link btn btn-dark btn-sm" href="/logouts" method="post" as="button">Post Link</Link>
                 </li>
             </ul>
             <form class="d-flex" role="search">

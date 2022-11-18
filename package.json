@@ -27,6 +27,7 @@
         "@inertiajs/inertia-vue3": "^0.6.0",
         "@inertiajs/progress": "^0.2.7",
         "bootstrap-vue": "^2.23.1",
-        "vue": "^3.2.36"
+        "vue": "^3.2.36",
+        "vue3-timeago": "^1.0.6"
     }
 }
