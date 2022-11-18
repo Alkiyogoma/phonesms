@@ -10,16 +10,22 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@popperjs/core": "^2.10.2",
         "@vue/compiler-sfc": "^3.2.45",
         "axios": "^0.21",
+        "bootstrap": "^5.2.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vue-loader": "^16.8.3"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.1",
+        "@fortawesome/free-solid-svg-icons": "^6.2.1",
+        "@fortawesome/vue-fontawesome": "^3.0.2",
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/inertia-vue3": "^0.6.0",
+        "bootstrap-vue": "^2.23.1",
         "vue": "^3.2.36"
     }
 }

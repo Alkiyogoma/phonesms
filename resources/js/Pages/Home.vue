@@ -1,10 +1,16 @@
 <template>
+    
+<main class="container">
+  <div class="bg-light p-5 rounded">
     <h1>Hello, {{ name }} {{ phone }}!</h1>
     <hr> 
-    <p>In this tutoaliars  i will show th teh list of companies i work with</p>
+    <p class="lead">In this tutoaliars  i will show th teh list of companies i work with</p>
     <ul>
         <li v-for="company of companies" v-text="company"></li>
     </ul>
+    <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
+  </div>
+</main>
 </template>
 
 <script>
@@ -17,10 +23,3 @@ export default {
     }
 };
 </script>
-echo "# chat-api-php" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:Alkiyogoma/laravel-inertiajs.git
-git push -u origin main

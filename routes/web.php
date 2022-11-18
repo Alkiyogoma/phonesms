@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return inertia('Welcome');
+    return inertia('Site');
 });
 
 Route::get('/web', function () {
@@ -28,3 +29,7 @@ Route::get('/web', function () {
         ]
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
