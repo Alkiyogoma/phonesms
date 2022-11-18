@@ -25,7 +25,7 @@ Route::get('/web', function () {
         'phone' => '0744158016',
         'email' => 'albogast@darsms.co.tz',
         'companies' => [
-            'Darsms', 'Kanisalink', 'Shulesoft', 'AlboKUKU'
+            'Laravel', 'Vue', 'Django', 'Postgres', 'Boostrap', 'MySQL'
         ]
     ]);
 });

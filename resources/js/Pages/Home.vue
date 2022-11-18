@@ -1,5 +1,5 @@
 <template>
-    
+    <Nav />  
 <main class="container">
   <div class="bg-light p-5 rounded">
     <h1>Hello, {{ name }} {{ phone }}!</h1>
@@ -8,18 +8,20 @@
     <ul>
         <li v-for="company of companies" v-text="company"></li>
     </ul>
-    <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
+    <Link class="btn btn-lg btn-primary" href="/" role="button"> &raquo; Go Back</Link>
   </div>
 </main>
 </template>
 
 <script>
+import Nav from '../Shared/Nav.vue';
+
 export default {
+    components: { Nav },
     props: {
         name: String,
         phone: String,
         email: String,
-        companies: Array
     }
 };
 </script>

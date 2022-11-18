@@ -1,4 +1,5 @@
 <template>
+  <Nav />
     <h1 class="visually-hidden">Heroes examples</h1>
 
     <div class="px-4 py-5 my-5 text-center">
@@ -98,8 +99,10 @@
 </template>
 
 <script>
+import Nav from '../Shared/Nav.vue';
 
 export default {
+    components: { Nav },
     props: {
         name: String,
         phone: String,
