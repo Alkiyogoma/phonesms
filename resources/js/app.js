@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Link } from '@inertiajs/inertia-vue3'
 import Header from './Pages/Header.vue'
 import { InertiaProgress } from '@inertiajs/progress'
-
+ 
 createInertiaApp({
   resolve: name => require(`./Pages/${name}`),
   setup({ el, App, props, plugin }) {
@@ -19,6 +19,7 @@ createInertiaApp({
       .component("font-awesome-icon", FontAwesomeIcon)
       .component("Link", Link)
       .mount(el)
+
   },
   components: {
     Header

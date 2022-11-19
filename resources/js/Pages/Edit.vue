@@ -1,6 +1,6 @@
 <template>
-    <Nav />  
-<main class="container">
+    <Nav /> 
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="bg-light p-5 rounded">
     <h1>Hello, {{ user.first_name }} {{ user.last_name }}!</h1>
     <hr> 
@@ -13,7 +13,7 @@
     <Link class="btn btn-lg btn-primary" href="/users" role="button"> &raquo; Go Back</Link>
     <Link class="btn btn-lg btn-secondary"  :href="`/user/${user.next.customer_id}/edit`" role="button">Next {{ user.next.first_name }}  &raquo; </Link>
   </div>
-</main>
+    </main>
 </template>
 
 <script>

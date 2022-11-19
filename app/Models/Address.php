@@ -55,7 +55,7 @@ class Address extends Model
 
 	public function city()
 	{
-		return $this->belongsTo(City::class);
+		return $this->belongsTo(City::class, 'city_id', 'city_id');
 	}
 
 	public function customers()

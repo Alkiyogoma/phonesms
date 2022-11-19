@@ -45,6 +45,26 @@ class UsersController extends Controller
         ]);
     }
 
+    public function address()
+    {
+        return Inertia::render('Messages', [
+            'users' => \App\Models\Address::whereNotNull('district')
+                ->orderBy('address')
+                ->paginate(12)->withQueryString()
+                ->through(fn ($User) => [
+                    'id' => $User->address_id,
+                    'address' => $User->address,
+                    'district' => $User->district,
+                    'city' =>  !empty($User->city) > 0 ? $User->city->city : 'Kigoma',
+                    'country' =>  $User->city_id > 0 && !empty($User->city->country) ? $User->city->country->country : 'Tanzania',
+                    'deleted_at' => $User->deleted_at,
+                    'edit_url' => url('users.edit', $User),
+                ]),
+            'name' => 'Albogast',
+            'create_url' => url('users.create'),
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('Users/Create');

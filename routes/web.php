@@ -45,6 +45,16 @@ Route::get('/users', function () {
 });
 
 Route::get('user/{contact}/edit', [UsersController::class, 'edit_customer'])->name('contacts.edit');
+Route::get('messages', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('names', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('contacts', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('groups', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('invoices', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('week', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('month', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('year', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('last', [UsersController::class, 'address'])->name('contacts.edit');
+Route::get('integretions', [UsersController::class, 'address'])->name('contacts.edit');
 
 Route::post('/logouts', function () {
     dd('Logout page visited');
