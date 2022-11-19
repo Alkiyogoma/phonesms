@@ -1,7 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            
             <a class="navbar-brand" href="#">Inertia-JS APP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,6 +18,9 @@
                 </li>
                 <li class="nav-item">
                     <Link class="nav-link" href="/users">Customers</Link>
+                </li>
+                <li class="nav-item">
+                    <Link class="nav-link" href="/dashboard">Dashboard</Link>
                 </li>
                 <li class="nav-item">
                     <Link class="nav-link btn btn-dark btn-sm" href="/logouts" method="post" as="button">Post Link</Link>

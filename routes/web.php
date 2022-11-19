@@ -19,6 +19,11 @@ Route::get('/', function () {
     return inertia('Site');
 });
 
+Route::get('/dashboard', function () {
+    return inertia('Dashboard');
+});
+
+
 Route::get('/users', function () {
     return Inertia::render('Users', [
         'users' => \App\Models\Customer::all()->map(function ($user) {
