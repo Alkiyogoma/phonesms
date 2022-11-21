@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item">
             <Link class="nav-link" href="/groups">
-              <vue-feather type="list" size="16"></vue-feather>
+              <vue-feather type="copy" size="16"></vue-feather>
               Clients Groups
             </Link>
           </li>

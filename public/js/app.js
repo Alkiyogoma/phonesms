@@ -26013,7 +26013,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_feather, {
-        type: "list",
+        type: "copy",
         size: "16"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Clients Groups ")];
     }),
