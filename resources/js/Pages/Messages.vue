@@ -60,7 +60,7 @@ import Nav from "../Shared/Nav.vue";
 export default {
     components: { Nav },
     props: {
-        name: 'Albogast',
+        name: String,
         users: Array,
     },
 };

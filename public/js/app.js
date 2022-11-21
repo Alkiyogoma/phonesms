@@ -23572,9 +23572,6 @@ __webpack_require__.r(__webpack_exports__);
     Nav: _Shared_Nav_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    name: String,
-    phone: String,
-    email: String,
     user: Array
   }
 });
@@ -23703,7 +23700,7 @@ __webpack_require__.r(__webpack_exports__);
     Nav: _Shared_Nav_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    name: 'Albogast',
+    name: String,
     users: Array
   }
 });
