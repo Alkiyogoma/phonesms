@@ -10,8 +10,11 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.6.4",
         "laravel/framework": "^8.75",
+        "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "*",
+        "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -19,7 +22,8 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "reliese/laravel": "^1.1"
     },
     "autoload": {
         "psr-4": {
