@@ -1,964 +1,695 @@
 <template>
-    
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Welcome !</h4>
-
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Welcome !</li>
-                    </ol>
+ <div class="container px-6 mx-auto grid">
+           <br>
+            <!-- CTA -->
+            <Link
+              class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+              href="/forms"
+            >
+              <div class="flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path>
+                </svg>
+                <span>Dashboard</span>
+              </div>
+              <span>View more &RightArrow;</span>
+            </Link>
+            <!-- Cards -->
+            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+              <!-- Card -->
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                    ></path>
+                  </svg>
                 </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <!-- card -->
-            <div class="card card-h-100">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <span class="text-muted mb-3 lh-1 d-block text-truncate">Total Sales</span>
-                            <h4 class="mb-3">
-                                $<span class="counter-value" data-target="354.5">0</span>k
-                            </h4>
-                            <div class="text-nowrap">
-                                <span class="badge bg-soft-success text-success">+$20.9k</span>
-                                <span class="ms-1 text-muted font-size-13">Since last week</span>
-                            </div>
-                        </div>
-
-                        <div class="flex-shrink-0 text-end dash-widget">
-                            <div id="mini-chart1"  class="apex-charts"></div>
-                        </div>
-                    </div>
-                </div><!-- end card body -->
-            </div><!-- end card -->
-        </div><!-- end col -->
-
-        <div class="col-xl-3 col-md-6">
-            <!-- card -->
-            <div class="card card-h-100">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <span class="text-muted mb-3 lh-1 d-block text-truncate">Total Items</span>
-                            <h4 class="mb-3">
-                                <span class="counter-value" data-target="1256">0</span>
-                            </h4>
-                            <div class="text-nowrap">
-                                <span class="badge bg-soft-danger text-danger">-29 Trades</span>
-                                <span class="ms-1 text-muted font-size-13">Since last week</span>
-                            </div>
-                        </div>
-                        <div class="flex-shrink-0 text-end dash-widget">
-                            <div id="mini-chart2" data-colors='["#1c84ee", "#33c38e"]' class="apex-charts"></div>
-                        </div>
-                    </div>
-                </div><!-- end card body -->
-            </div><!-- end card -->
-        </div><!-- end col-->
-
-        <div class="col-xl-3 col-md-6">
-            <!-- card -->
-            <div class="card card-h-100">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <span class="text-muted mb-3 lh-1 d-block text-truncate">Average Sales</span>
-                            <h4 class="mb-3">
-                                $<span class="counter-value" data-target="7.54">0</span>M
-                            </h4>
-                            <div class="text-nowrap">
-                                <span class="badge bg-soft-success text-success">+ $2.8k</span>
-                                <span class="ms-1 text-muted font-size-13">Since last week</span>
-                            </div>
-                        </div>
-                        <div class="flex-shrink-0 text-end dash-widget">
-                            <div id="mini-chart3" data-colors='["#1c84ee", "#33c38e"]' class="apex-charts"></div>
-                        </div>
-                    </div>
-                </div><!-- end card body -->
-            </div><!-- end card -->
-        </div><!-- end col -->
-
-        <div class="col-xl-3 col-md-6">
-            <!-- card -->
-            <div class="card card-h-100">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">
-                            <span class="text-muted mb-3 lh-1 d-block text-truncate">Order Delivery</span>
-                            <h4 class="mb-3">
-                                <span class="counter-value" data-target="18.34">0</span>%
-                            </h4>
-                            <div class="text-nowrap">
-                                <span class="badge bg-soft-success text-success">+5.32%</span>
-                                <span class="ms-1 text-muted font-size-13">Since last week</span>
-                            </div>
-                        </div>
-                        <div class="flex-shrink-0 text-end dash-widget">
-                            <div id="mini-chart4" data-colors='["#1c84ee", "#33c38e"]' class="apex-charts"></div>
-                        </div>
-                    </div>
-                </div><!-- end card body -->
-            </div><!-- end card -->
-        </div><!-- end col -->    
-    </div><!-- end row-->
-
-    <div class="row">
-        <div class="col-xl-8">
-            <!-- card -->
-            <div class="card">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex flex-wrap align-items-center mb-4">
-                        <h5 class="card-title me-2">Market Overview</h5>
-                        <div class="ms-auto">
-                            <div>
-                                <button type="button" class="btn btn-soft-primary btn-sm">
-                                    ALL
-                                </button>
-                                <button type="button" class="btn btn-soft-secondary btn-sm">
-                                    1M
-                                </button>
-                                <button type="button" class="btn btn-soft-secondary btn-sm">
-                                    6M
-                                </button>
-                                <button type="button" class="btn btn-soft-secondary btn-sm active">
-                                    1Y
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center">
-                        <div class="col-xl-8">
-                            <div>
-                                <div id="market-overview" data-colors='["#1c84ee", "#33c38e"]' class="apex-charts"></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="p-4">
-                                <div class="mt-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar-sm m-auto">
-                                            <span class="avatar-title rounded-circle bg-light text-dark font-size-13">
-                                                1
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <span class="font-size-14">Mobile Phones</span>
-                                        </div>
-
-                                        <div class="flex-shrink-0">
-                                            <span class="badge rounded-pill badge-soft-success font-size-12 fw-medium">+5.4%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar-sm m-auto">
-                                            <span class="avatar-title rounded-circle bg-light text-dark font-size-13">
-                                                2
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <span class="font-size-14">Smart Watch</span>
-                                        </div>
-
-                                        <div class="flex-shrink-0">
-                                            <span class="badge rounded-pill badge-soft-success font-size-12 fw-medium">+6.8%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar-sm m-auto">
-                                            <span class="avatar-title rounded-circle bg-light text-dark font-size-13">
-                                                3
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <span class="font-size-14">Protable Acoustics</span>
-                                        </div>
-
-                                        <div class="flex-shrink-0">
-                                            <span class="badge rounded-pill badge-soft-danger font-size-12 fw-medium">-4.9%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar-sm m-auto">
-                                            <span class="avatar-title rounded-circle bg-light text-dark font-size-13">
-                                                4
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <span class="font-size-14">Smart Speakers</span>
-                                        </div>
-
-                                        <div class="flex-shrink-0">
-                                            <span class="badge rounded-pill badge-soft-success font-size-12 fw-medium">+3.5%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-3">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar-sm m-auto">
-                                            <span class="avatar-title rounded-circle bg-light text-dark font-size-13">
-                                                5
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <span class="font-size-14">Camcorders</span>
-                                        </div>
-
-                                        <div class="flex-shrink-0">
-                                            <span class="badge rounded-pill badge-soft-danger font-size-12 fw-medium">-0.3%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-4 pt-2">
-                                    <a href="#" class="btn btn-primary w-100">See All Balances <i
-                                            class="mdi mdi-arrow-right ms-1"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    Total clients
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    6389
+                  </p>
                 </div>
-                <!-- end card -->
-            </div>
-            <!-- end col -->
-        </div>
-        <!-- end row-->
-
-        <div class="col-xl-4">
-            <!-- card -->
-            <div class="card">
-                <!-- card body -->
-                <div class="card-body">
-                    <div class="d-flex flex-wrap align-items-center mb-4">
-                        <h5 class="card-title me-2">Sales by Locations</h5>
-                        <div class="ms-auto">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-muted font-size-12">Sort By:</span> <span class="fw-medium">World<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="#">USA</a>
-                                    <a class="dropdown-item" href="#">Russia</a>
-                                    <a class="dropdown-item" href="#">Australia</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="sales-by-locations" data-colors='["#33c38e"]' style="height: 253px"></div>
-
-                    <div class="px-2 py-2">
-                        <p class="mb-1">USA <span class="float-end">75%</span></p>
-                        <div class="progress mt-2" style="height: 6px;">
-                            <div class="progress-bar progress-bar-striped bg-primary" role="progressbar"
-                                style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="75">
-                            </div>
-                        </div>
-
-                        <p class="mt-3 mb-1">Russia <span class="float-end">55%</span></p>
-                        <div class="progress mt-2" style="height: 6px;">
-                            <div class="progress-bar progress-bar-striped bg-primary" role="progressbar"
-                                style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="55">
-                            </div>
-                        </div>
-
-                        <p class="mt-3 mb-1">Australia <span class="float-end">85%</span></p>
-                        <div class="progress mt-2" style="height: 6px;">
-                            <div class="progress-bar progress-bar-striped bg-primary" role="progressbar"
-                                style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="85">
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <!-- Card -->
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
                 </div>
-                <!-- end card body -->
-            </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-    </div>
-    <!-- end row-->
-
-    <div class="row">
-        <div class="col-xl-3">
-            <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Customer List</h4>
-                    <div class="flex-shrink-0">
-                        <div class="dropdown">
-                            <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="text-muted">All Members<i class="mdi mdi-chevron-down ms-1"></i></span>
-                            </a>
-    
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                                <a class="dropdown-item" href="#">Members</a>
-                                <a class="dropdown-item" href="#">New Members</a>
-                                <a class="dropdown-item" href="#">Old Members</a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end card header -->
-
-                <div class="card-body px-0">
-                    <div class="px-3" data-simplebar style="max-height: 386px;">
-                        <div class="d-flex align-items-center pb-4">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-2.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Randy Matthews</a></h5>
-                                <span class="text-muted">Randy@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center pb-4">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-4.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Vernon Wood</a></h5>
-                                <span class="text-muted">Vernon@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center pb-4">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-5.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Howard Rhoades</a></h5>
-                                <span class="text-muted">Howard@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center pb-4">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-6.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Arthur Zurcher</a></h5>
-                                <span class="text-muted">Arthur@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center pb-4">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-8.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Angela Palmer</a></h5>
-                                <span class="text-muted">Angela@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center pb-3">
-                            <div class="avatar-md me-4">
-                                <img src="{{ URL::asset('assets/images/users/avatar-9.jpg') }}" class="img-fluid rounded-circle" alt="">
-                            </div>
-                            <div class="flex-grow-1">
-                                <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">Dorothy Wimson</a></h5>
-                                <span class="text-muted">Dorothy@gmail.com</span>
-                            </div>
-                            <div class="flex-shrink-0 text-end">
-                                <div class="dropdown align-self-start">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bx bx-dots-vertical-rounded font-size-24 text-dark"></i>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Copy</a>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Forward</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    Account balance
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    $ 46,760.89
+                  </p>
                 </div>
-                <!-- end card body -->
-            </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-        
-        <div class="col-xl-5">
-            <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Selling Products</h4>
-                    <div class="flex-shrink-0">
-                        <div class="dropdown align-self-start">
-                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-dots-horizontal-rounded font-size-18 text-dark"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Copy</a>
-                                <a class="dropdown-item" href="#">Save</a>
-                                <a class="dropdown-item" href="#">Forward</a>
-                                <a class="dropdown-item" href="#">Delete</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- end card header -->
-
-                <div class="card-body px-0 pt-2">
-                        <div class="table-responsive px-3" data-simplebar style="max-height: 395px;">
-                            <table class="table align-middle table-nowrap">
-                                <tbody>
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-1.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark">Half sleeve T-shirt</a></h5>
-                                                <span class="text-muted">$240.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Available</a></p>
-                                            <span class="text-muted">243K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">145 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-2.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark">Light blue T-shirt</a></h5>
-                                                <span class="text-muted">$650.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Out Of Stock</a></p>
-                                            <span class="text-muted">1,253K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bx-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">260 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-3.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark">Black Color T-shirt</a></h5>
-                                                <span class="text-muted">$325.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Available</a></p>
-                                            <span class="text-muted">2,586K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">220 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-4.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark"></a>Hoodie (Blue)</h5>
-                                                <span class="text-muted">$170.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Available</a></p>
-                                            <span class="text-muted">4,565K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">165 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-5.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark"></a>Half sleeve T-Shirt</h5>
-                                                <span class="text-muted">$150.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Out Of Stock</a></p>
-                                            <span class="text-muted">5,265K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bx-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">165 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px;">
-                                            <div class="avatar-md me-4">
-                                                <img src="{{ URL::asset('assets/images/product/img-6.png') }}" class="img-fluid" alt="">
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div>
-                                                <h5 class="font-size-15"><a href="#" class="text-dark"></a>Green color T-shirt</h5>
-                                                <span class="text-muted">$120.00</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <p class="mb-1"><a href="#" class="text-dark">Available</a></p>
-                                            <span class="text-muted">125K</span>
-                                        </td>
-
-                                        <td>
-                                            <div class="text-end">
-                                                <ul class="mb-1 ps-0">
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bxs-star text-warning"></li>
-                                                    <li class="bx bx-star text-warning"></li>
-                                                </ul>
-                                                <span class="text-muted mt-1">165 Sales</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+              </div>
+              <!-- Card -->
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                    ></path>
+                  </svg>
                 </div>
-                <!-- end card body -->
-            </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Chat</h4>
-                    <div class="flex-shrink-0">
-                        <select class="form-select form-select-sm mb-0 my-n1">
-                            <option value="Today" selected="">Today</option>
-                            <option value="Yesterday">Yesterday</option>
-                            <option value="Week">Last Week</option>
-                            <option value="Month">Last Month</option>
-                        </select>
-                    </div>
-                </div><!-- end card header -->
-
-                <div class="card-body px-0">
-                    <div class="px-3 chat-conversation" data-simplebar style="max-height: 350px;">
-                        <ul class="list-unstyled mb-0">
-                            <li class="chat-day-title"> 
-                                <span class="title">Today</span>
-                            </li>
-                            <li>
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <img src="{{ URL::asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:00 AM</span></div>
-                                                    <p class="mb-0">Good Morning</p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </li>
-
-                            <li class="right">
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:02 AM</span></div>
-                                                    <p class="mb-0">Good morning</p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{ URL::asset('assets/images/users/avatar-6.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                    </div>
-                                    
-                                </div>
-                                
-                            </li>
-
-                            <li>
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <img src="{{ URL::asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:04 AM</span></div>
-                                                    <p class="mb-0">
-                                                        Hi there, How are you?
-                                                    </p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <img src="{{ URL::asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:04 AM</span></div>
-                                                    <p class="mb-0">
-                                                        Waiting for your reply.As I heve to go back soon. i have to travel long distance.
-                                                    </p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </li>
-
-                            <li class="right">
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:08 AM</span></div>
-                                                    <p class="mb-0">
-                                                        Hi, I am coming there in few minutes. Please wait!! I am in taxi right now.
-                                                    </p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{ URL::asset('assets/images/users/avatar-6.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                    </div>
-                                </div>
-                                
-                            </li>
-
-                            <li>
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <img src="{{ URL::asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:06 AM</span></div>
-                                                    <p class="mb-0">
-                                                        Thank You very much, I am waiting here at StarBuck cafe.
-                                                    </p>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </li>
-                            
-
-                            <li>
-                                <div class="conversation-list">
-                                    <div class="d-flex">
-                                        <img src="{{ URL::asset('assets/images/users/avatar-3.jpg') }}" class="rounded-circle avatar-sm" alt="">
-                                        <div class="flex-1">
-                                            <div class="ctext-wrap">
-                                                <div class="ctext-wrap-content">
-                                                    <div class="conversation-name"><span class="time">10:09 AM</span></div>
-                                                    <p class="mb-0">
-                                                        img-1.jpg & img-2.jpg images for a New Projects
-                                                    </p>
-
-                                                    <ul class="list-inline message-img mt-3  mb-0">
-                                                        <li class="list-inline-item message-img-list">
-                                                            <a class="d-inline-block m-1" href="#">
-                                                                <img src="{{ URL::asset('assets/images/small/img-1.jpg') }}" alt="" class="rounded img-thumbnail">
-                                                            </a>                                                                  
-                                                        </li>
-
-                                                        <li class="list-inline-item message-img-list">
-                                                            <a class="d-inline-block m-1" href="#">
-                                                                <img src="{{ URL::asset('assets/images/small/img-2.jpg') }}" alt="" class="rounded img-thumbnail">
-                                                            </a>                                                                 
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="dropdown align-self-start">
-                                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Copy</a>
-                                                        <a class="dropdown-item" href="#">Save</a>
-                                                        <a class="dropdown-item" href="#">Forward</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="px-3">
-                        <div class="row">
-                            <div class="col">
-                                <div class="position-relative">
-                                    <input type="text" class="form-control border bg-soft-light" placeholder="Enter Message...">
-                                </div>
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send float-end"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    New sales
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    376
+                  </p>
                 </div>
+              </div>
+              <!-- Card -->
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    Pending contacts
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    35
+                  </p>
+                </div>
+              </div>
             </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-    </div><!-- end row -->
+
+            <!-- New Table -->
+            <div class="w-full overflow-hidden rounded-lg shadow-xs">
+              <div class="w-full overflow-x-auto">
+                <table class="w-full whitespace-no-wrap">
+                  <thead>
+                    <tr
+                      class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                    >
+                      <th class="px-4 py-3">Client</th>
+                      <th class="px-4 py-3">Amount</th>
+                      <th class="px-4 py-3">Status</th>
+                      <th class="px-4 py-3">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+                  >
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Hans Burger</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              10x Developer
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Jolina Angelie</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Unemployed
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 369.95
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600"
+                        >
+                          Pending
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1551069613-1904dbdcda11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Sarah Curry</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Designer
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 86.00
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"
+                        >
+                          Denied
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1551006917-3b4c078c47c9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Rulia Joberts</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Actress
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 1276.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1546456073-6712f79251bb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Wenzel Dashington</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Actor
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700"
+                        >
+                          Expired
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Dave Li</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Influencer
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Maria Ramovic</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Runner
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/photo-1566411520896-01e7ca4726af?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Hitney Wouston</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              Singer
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+
+                    <tr class="text-gray-700 dark:text-gray-400">
+                      <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
+                          <div
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div>
+                            <p class="font-semibold">Hans Burger</p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                              10x Developer
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        $ 863.45
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span
+                          class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+                        >
+                          Approved
+                        </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        6/10/2020
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div
+                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800"
+              >
+                <span class="flex items-center col-span-3">
+                  Showing 21-30 of 100
+                </span>
+                <span class="col-span-2"></span>
+                <!-- Pagination -->
+                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                  <nav aria-label="Table navigation">
+                    <ul class="inline-flex items-center">
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                          aria-label="Previous"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="w-4 h-4 fill-current"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                              clip-rule="evenodd"
+                              fill-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          1
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          2
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          3
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          4
+                        </button>
+                      </li>
+                      <li>
+                        <span class="px-3 py-1">...</span>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          8
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple"
+                        >
+                          9
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                          aria-label="Next"
+                        >
+                          <svg
+                            class="w-4 h-4 fill-current"
+                            aria-hidden="true"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clip-rule="evenodd"
+                              fill-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </button>
+                      </li>
+                    </ul>
+                  </nav>
+                </span>
+              </div>
+            </div>
+
+            <!-- Charts -->
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+              Charts
+            </h2>
+            <div class="grid gap-6 mb-8 md:grid-cols-2">
+              <div
+                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+                  Revenue
+                </h4>
+                <canvas id="pie"></canvas>
+                <div
+                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
+                >
+                  <!-- Chart legend -->
+                  <div class="flex items-center">
+                    <span
+                      class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"
+                    ></span>
+                    <span>Shirts</span>
+                  </div>
+                  <div class="flex items-center">
+                    <span
+                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
+                    ></span>
+                    <span>Shoes</span>
+                  </div>
+                  <div class="flex items-center">
+                    <span
+                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
+                    ></span>
+                    <span>Bags</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+                  Traffic
+                </h4>
+                <canvas id="line"></canvas>
+                <div
+                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
+                >
+                  <!-- Chart legend -->
+                  <div class="flex items-center">
+                    <span
+                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
+                    ></span>
+                    <span>Organic</span>
+                  </div>
+                  <div class="flex items-center">
+                    <span
+                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
+                    ></span>
+                    <span>Paid</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 </template>
+<script>
+import { Link } from '@inertiajs/inertia-vue3';
+import VueFeather from 'vue-feather';
+ 
+export default {
+    components: { Link, VueFeather },
+};
+
+</script>

@@ -16,13 +16,24 @@ use \App\Http\Controllers\UsersController;
 */
 
 Route::get('/', function () {
-    return inertia('Site');
+    return inertia('Dashboard');
 });
 
 Route::get('/dashboard', function () {
     return inertia('Dashboard');
 });
 
+Route::get('/reports', function () {
+    return inertia('Report');
+});
+
+Route::get('/tables', function () {
+    return inertia('Tables');
+});
+
+Route::get('/charts', function () {
+    return inertia('Charts');
+});
 
 Route::get('/users', function () {
     return Inertia::render('Users', [
@@ -71,6 +82,17 @@ Route::get('/web', function () {
     ]);
 });
 
+
+Route::get('/forms', function () {
+    return Inertia::render('Forms',[
+        'name' => "Albogast Dionis",
+        'phone' => '0744158016',
+        'email' => 'albogast@darsms.co.tz',
+        'companies' => [
+            'Laravel', 'Vue', 'Django', 'Postgres', 'Boostrap', 'MySQL'
+        ]
+    ]);
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
