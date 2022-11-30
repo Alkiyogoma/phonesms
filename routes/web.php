@@ -15,29 +15,29 @@ use \App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {
+Route::middleware('auth')->get('/', function () {
     return inertia('Dashboard');
 });
 
-Route::get('/dashboard', function () {
+Route::middleware('auth')->get('/dashboard', function () {
     return inertia('Dashboard');
 });
 
-Route::get('/reports', function () {
+Route::middleware('auth')->get('/reports', function () {
     return inertia('Report');
 });
 
-Route::get('/tables', function () {
+Route::middleware('auth')->get('/tables', function () {
     return inertia('Tables');
 });
 
-Route::get('/charts', function () {
+Route::middleware('auth')->get('/charts', function () {
     return inertia('Charts');
 });
 
-Route::get('/users', function () {
+Route::middleware('auth')->get('/users', function () {
     return Inertia::render('Users', [
-        'users' => \App\Models\Customer::all()->map(function ($user) {
+        'users' => \App\Models\User::all()->map(function ($user) {
             return [
                 'store_id' => $user->store_id,
                 'customer_id' => $user->customer_id,
@@ -55,23 +55,23 @@ Route::get('/users', function () {
     ]);
 });
 
-Route::get('user/{contact}/edit', [UsersController::class, 'edit_customer'])->name('contacts.edit');
-Route::get('messages', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('names', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('contacts', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('groups', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('invoices', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('week', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('month', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('year', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('last', [UsersController::class, 'address'])->name('contacts.edit');
-Route::get('integretions', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('user/{contact}/edit', [UsersController::class, 'edit_customer'])->name('contacts.edit');
+Route::middleware('auth')->get('messages', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('names', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('contacts', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('groups', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('invoices', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('week', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('month', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('year', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('last', [UsersController::class, 'address'])->name('contacts.edit');
+Route::middleware('auth')->get('integretions', [UsersController::class, 'address'])->name('contacts.edit');
 
-Route::post('/logouts', function () {
+Route::middleware('auth')->post('/logouts', function () {
     dd('Logout page visited');
 });
 
-Route::get('/web', function () {
+Route::middleware('auth')->get('/web', function () {
     return Inertia::render('Home',[
         'name' => "Albogast Dionis",
         'phone' => '0744158016',
@@ -83,7 +83,7 @@ Route::get('/web', function () {
 });
 
 
-Route::get('/forms', function () {
+Route::middleware('auth')->get('/forms', function () {
     return Inertia::render('Forms',[
         'name' => "Albogast Dionis",
         'phone' => '0744158016',
@@ -95,4 +95,6 @@ Route::get('/forms', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->get('/home', function () {
+    return inertia('Dashboard');
+});

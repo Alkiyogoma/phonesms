@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Customer;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class MessageController extends Controller
 {
@@ -69,7 +70,17 @@ class MessageController extends Controller
 
     public function create()
     {
-        return Inertia::render('Users/Create');
+        return Message::create([
+            'id' => Str::uuid(),
+            'contact' => request('contact'),
+            'content' => request('content'),
+            'failure_reason' => request('failure_reason'),
+            'last_attempted_at' => date('Y-m-d H:i:s'),
+            'order_timestamp' => date('Y-m-d H:i:s'),
+            'owner' => request('owner'),
+            'status' => request('status'),
+            'type' => request('type'),
+        ]);
     }
 
     public function store()

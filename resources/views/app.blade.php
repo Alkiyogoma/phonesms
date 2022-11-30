@@ -8,26 +8,26 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/tailwind.output.css') }}" />
+    <link rel="stylesheet" href="{{ url('public/assets/css/tailwind.output.css') }}" />
     
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <script
-      src="{{ URL::asset('assets/js/alpine.min.js') }}"
+      src="{{ url('public/assets/js/alpine.min.js') }}"
       defer
     ></script>
-    <script src="{{ URL::asset('assets/js/init-alpine.js') }}"></script>
+    <script src="{{ url('public/assets/js/init-alpine.js') }}"></script>
     <link
       rel="stylesheet"
-      href="{{ URL::asset('assets/css/Chart.min.css') }}"
+      href="{{ url('public/assets/css/Chart.min.css') }}"
     />
     <script
-      src="{{ URL::asset('assets/js/Chart.min.js') }}"
+      src="{{ url('public/assets/js/Chart.min.js') }}"
       defer
     ></script>
-    <script src="{{ URL::asset('assets/js/charts-lines.js') }}" defer></script>
-    <script src="{{ URL::asset('assets/js/charts-pie.js') }}" defer></script>
-    <script src="{{ URL::asset('assets/js/charts-bars.js') }}" defer></script>
+    <script src="{{ url('public/assets/js/charts-lines.js') }}" defer></script>
+    <script src="{{ url('public/assets/js/charts-pie.js') }}" defer></script>
+    <script src="{{ url('public/assets/js/charts-bars.js') }}" defer></script>
   </head>
   <body>
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen}" >
