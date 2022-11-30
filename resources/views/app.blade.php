@@ -10,8 +10,8 @@
     />
     <link rel="stylesheet" href="{{ url('public/assets/css/tailwind.output.css') }}" />
     
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-    <script src="{{ mix('/js/app.js') }}" defer></script>
+    <link href="{{ url('public/css/app.css') }}" rel="stylesheet" />
+    <script src="{{ url('public/js/app.js') }}" defer></script>
     <script
       src="{{ url('public/assets/js/alpine.min.js') }}"
       defer
@@ -21,10 +21,7 @@
       rel="stylesheet"
       href="{{ url('public/assets/css/Chart.min.css') }}"
     />
-    <script
-      src="{{ url('public/assets/js/Chart.min.js') }}"
-      defer
-    ></script>
+    <script src="{{ url('public/assets/js/Chart.min.js') }}" defer ></script>
     <script src="{{ url('public/assets/js/charts-lines.js') }}" defer></script>
     <script src="{{ url('public/assets/js/charts-pie.js') }}" defer></script>
     <script src="{{ url('public/assets/js/charts-bars.js') }}" defer></script>
