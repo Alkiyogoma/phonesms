@@ -433,6 +433,42 @@ class ApiController extends Controller {
         
     }
 
+    public function heartbeats(Request $request)
+    {
+        # Store the heartbeat to make notify that a phone number is still active
+
+        $phone_id = request('owner');
+
+        $user = $this->AuthValidate($request);
+        $user = DB::table('users')->where("api_key", $user->api_key)->first();
+        $phone = DB::table('phones')->where("phone_number", $phone_id)->first();
+            if(!empty($phone)){
+                DB::table('phones')->where("phone_number", $phone_id)->update(['created_at' => date("Y-m-d H:i:s"), 'updated_at'  => date("Y-m-d H:i:s")]);
+                $body = [
+                    "id" => $phone->id,
+                    "owner" =>  $phone->phone_number,
+                    "user_id" =>  $user->id,
+                    "timestamp" =>  $phone->created_at
+                  ];
+                  $users = array();
+                  $users['data'] = $body;
+      
+                  $status = array(
+                      "message" => "user fetched successfully",
+                      "status" => "success"
+                  );
+                  echo die(json_encode(array_merge($users, $status)));
+            }else{
+                $status = [
+                    "data" =>  "The request body is not a valid JSON string",
+                    "message" =>  "The request isn't properly formed",
+                    "status" => "error"
+                ];
+              echo die(json_encode($status));
+            }
+   
+    }
+        
     public function errors($var = null)
     {
 /*

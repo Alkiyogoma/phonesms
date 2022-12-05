@@ -20,11 +20,13 @@ use App\Http\Controllers\ApiController;
     Route::any('/messages/receive', [ApiController::class, 'received']);
     Route::any('/messages/send', [ApiController::class, 'sendMessage']);
     Route::any('/messages/{any?}/events', [ApiController::class, 'events']);
-    Route::get('/phones', [ApiController::class, 'phones']);
-    Route::post('/phones', [ApiController::class, 'updatePhones']);
+    Route::any('/phones', [ApiController::class, 'phones']);
+    Route::put('/phones', [ApiController::class, 'updatePhones']);
+    Route::get('/heartbeats', [ApiController::class, 'heartbeats']);
+    Route::post('/heartbeats', [ApiController::class, 'heartbeats']);
     Route::any('/billing/usage', [ApiController::class, 'billing']);
     Route::any('/billing/usage-history', [ApiController::class, 'billingHistory']);
-    Route::post('/users/me', [ApiController::class, 'updateUser']);
+    Route::put('/users/me', [ApiController::class, 'updateUser']);
     Route::get('/users/me', [ApiController::class, 'me']);
 
 
