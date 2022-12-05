@@ -15,11 +15,11 @@ use App\Http\Controllers\ApiController;
 |
 */
 //sms routes
-    Route::any('/messages', [ApiController::class, 'getMessages']);
-    Route::any('/messages/outstanding', [ApiController::class, 'outstanding']);
-    Route::any('/messages/receive', [ApiController::class, 'received']);
-    Route::any('/messages/send', [ApiController::class, 'sendMessage']);
-    Route::any('/messages/{any?}/events', [ApiController::class, 'events']);
+    Route::get('/messages', [ApiController::class, 'getMessages']);
+    Route::get('/messages/outstanding', [ApiController::class, 'outstanding']);
+    Route::post('/messages/receive', [ApiController::class, 'received']);
+    Route::post('/messages/send', [ApiController::class, 'sendMessage']);
+    Route::post('/messages/{any?}/events', [ApiController::class, 'events']);
     Route::any('/phones', [ApiController::class, 'phones']);
     Route::put('/phones', [ApiController::class, 'updatePhones']);
     Route::get('/heartbeats', [ApiController::class, 'heartbeats']);
