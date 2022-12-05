@@ -22,7 +22,7 @@ class ApiController extends Controller {
             'failure_reason' => 'failure_reason',
             'last_attempted_at' => date('Y-m-d H:i:s'),
             'order_timestamp' => date('Y-m-d H:i:s'),
-            'owner' => request('owner'),
+            'owner' => request('from'),
             'status' => 'pending',
             'user_id' => $user->user_id,
             'type' => 'type',
