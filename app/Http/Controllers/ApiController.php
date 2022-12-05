@@ -17,12 +17,12 @@ class ApiController extends Controller {
 
         $message = Message::create([
             'id' => Str::uuid(),
-            'contact' => request('to'),
+            'contact' => "+".request('to'),
             'content' => request('content'),
             'failure_reason' => 'failure_reason',
             'last_attempted_at' => date('Y-m-d H:i:s'),
             'order_timestamp' => date('Y-m-d H:i:s'),
-            'owner' => request('from'),
+            'owner' => "+".request('from'),
             'status' => 'pending',
             'user_id' => $user->user_id,
             'type' => 'type',
