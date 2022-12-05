@@ -17,7 +17,7 @@ class ApiController extends Controller {
 
         $message = Message::create([
             'id' => Str::uuid(),
-            'contact' => request('contact'),
+            'contact' => request('to'),
             'content' => request('content'),
             'failure_reason' => 'failure_reason',
             'last_attempted_at' => date('Y-m-d H:i:s'),
