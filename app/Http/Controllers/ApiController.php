@@ -430,7 +430,7 @@ class ApiController extends Controller {
                     "user_id" =>  $user->id,
                     "timestamp" =>  date('Y-m-d H:i:s')
                   ];
-                  DB::table('heartbeat')->where("owner", '+'.$phone_id)->update(["timestamp" =>  date('Y-m-d H:i:s')]);
+                  DB::table('heartbeat')->where("owner", $phone_id)->update(["timestamp" =>  date('Y-m-d H:i:s')]);
                 }else{
                   $body = [
                     "id" => Str::uuid(),
