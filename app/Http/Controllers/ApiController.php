@@ -422,7 +422,7 @@ class ApiController extends Controller {
         $user = DB::table('users')->where("api_key", $user->api_key)->first();
         $phones = DB::table('phones')->where("phone_number", $phone_id)->first();
         if(!empty($phones)){
-            $phone =  DB::table('heartbeat')->where("owner", '+'.$phone_id)->first();
+            $phone =  DB::table('heartbeat')->where("owner", $phone_id)->first();
             if(!empty($phone)){
                 $body = [
                     "id" => $phone->id,
