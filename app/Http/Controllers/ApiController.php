@@ -473,7 +473,7 @@ class ApiController extends Controller {
         $dd =  Http::withHeaders([
             'x-api-key' => $apiKey,
             ])->post('https://api.httpsms.com/v1/messages/send', [
-                'content' => 'API This is a sample text message - ALBO',
+                'content' => request('content'),
                 'from'    => request('from'),
                 'to'      => request('to')
             ]);
