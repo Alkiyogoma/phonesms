@@ -426,7 +426,7 @@ class ApiController extends Controller {
             if(!empty($phone)){
                 $body = [
                     "id" => $phone->id,
-                    "owner" => '+'.$phone_id,
+                    "owner" => $phone_id,
                     "user_id" =>  $user->id,
                     "timestamp" =>  date('Y-m-d H:i:s')
                   ];
@@ -434,7 +434,7 @@ class ApiController extends Controller {
                 }else{
                   $body = [
                     "id" => Str::uuid(),
-                    "owner" => '+'.$phone_id,
+                    "owner" => $phone_id,
                     "user_id" =>  $user->id,
                     "timestamp" =>  date('Y-m-d H:i:s')
                   ];
