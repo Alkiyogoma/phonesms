@@ -314,13 +314,7 @@ class ApiController extends Controller {
                 );
                 echo die(json_encode(array_merge($users, $status)));
             }else{
-                $data = [
-                    "data" => "The request message is empty no message found ",
-                    "message" => "The request isn't properly formed",
-                    "status" => "error"
-                ];
-                echo die(json_encode($data));
-       
+                return $this->errors();
             }
 
     }
@@ -345,12 +339,7 @@ class ApiController extends Controller {
             );
             echo die(json_encode(array_merge($users, $status)));
         }else{
-            $status = [
-                "data" =>  "The request body is not a valid JSON string",
-                "message" =>  "The request isn't properly formed",
-                "status" => "error"
-            ];
-          echo die(json_encode($status));
+            return $this->errors();
         }
     }
 
@@ -395,12 +384,7 @@ class ApiController extends Controller {
             );
             echo die(json_encode(array_merge($users, $status)));
         }else{
-            $status = [
-                "data" =>  "The request body is not a valid JSON string",
-                "message" =>  "The request isn't properly formed",
-                "status" => "error"
-            ];
-          echo die(json_encode($status));
+            return $this->errors();
         }
         
     }
@@ -423,12 +407,7 @@ class ApiController extends Controller {
             );
             echo die(json_encode($status));
         }else{
-            $status = [
-                "data" =>  "The request body is not a valid JSON string",
-                "message" =>  "The request isn't properly formed",
-                "status" => "error"
-            ];
-          echo die(json_encode($status));
+            return $this->errors();
         }
         
     }
@@ -436,41 +415,56 @@ class ApiController extends Controller {
     public function heartbeats(Request $request)
     {
         # Store the heartbeat to make notify that a phone number is still active
-
+        $users = array();
         $phone_id = request('owner');
-
+        if($phone_id != ''){
         $user = $this->AuthValidate($request);
         $user = DB::table('users')->where("api_key", $user->api_key)->first();
-        $phone = DB::table('phones')->where("phone_number", $phone_id)->first();
+        $phones = DB::table('phones')->where("phone_number", $phone_id)->first();
+        if(!empty($phones)){
+            $phone =  DB::table('heartbeat')->where("owner", '+'.$phone_id)->first();
             if(!empty($phone)){
-                DB::table('phones')->where("phone_number", $phone_id)->update(['created_at' => date("Y-m-d H:i:s"), 'updated_at'  => date("Y-m-d H:i:s")]);
                 $body = [
                     "id" => $phone->id,
-                    "owner" =>  $phone->phone_number,
+                    "owner" => '+'.$phone_id,
                     "user_id" =>  $user->id,
-                    "timestamp" =>  $phone->created_at
+                    "timestamp" =>  date('Y-m-d H:i:s')
                   ];
-                  $users = array();
-                  $users['data'] = $body;
-      
-                  $status = array(
-                      "message" => "user fetched successfully",
-                      "status" => "success"
-                  );
-                  echo die(json_encode(array_merge($users, $status)));
+                  DB::table('heartbeat')->where("owner", '+'.$phone_id)->update(["timestamp" =>  date('Y-m-d H:i:s')]);
+                }else{
+                  $body = [
+                    "id" => Str::uuid(),
+                    "owner" => '+'.$phone_id,
+                    "user_id" =>  $user->id,
+                    "timestamp" =>  date('Y-m-d H:i:s')
+                  ];
+                  DB::table('heartbeat')->insert($body);
+                }
+                $users['data'] = $body;
+                
+                $status = array(
+                    "message" => "user fetched successfully",
+                    "status" => "success"
+                );
+                echo die(json_encode(array_merge($users, $status)));
             }else{
-                $status = [
-                    "data" =>  "The request body is not a valid JSON string",
-                    "message" =>  "The request isn't properly formed",
-                    "status" => "error"
-                ];
-              echo die(json_encode($status));
+                return $this->errors();
+            }
+            }else{
+                return $this->errors();
             }
    
     }
         
-    public function errors($var = null)
+    public function errors()
     {
+        $status = [
+            "data" =>  "The request body is not a valid JSON string",
+            "message" =>  "The request isn't properly formed",
+            "status" => "error"
+        ];
+        echo die(json_encode($status));
+
 /*
         // 200	OK
 
