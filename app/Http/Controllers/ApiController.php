@@ -20,13 +20,13 @@ class ApiController extends Controller {
             'id' => $id,
             'contact' => "+".request('to'),
             'content' => request('content'),
-            'failure_reason' => 'failure_reason',
+            'failure_reason' => null,
             'last_attempted_at' => date('Y-m-d H:i:s'),
             'order_timestamp' => date('Y-m-d H:i:s'),
             'owner' => "+".request('from'),
             'status' => 'pending',
             'user_id' => $user->user_id,
-            'type' => 'type',
+            "type" => "mobile-terminated",
         ]);
         if($message){
             $users = array();
@@ -295,7 +295,7 @@ class ApiController extends Controller {
 
         $user = $this->AuthValidate($request);
         $user = DB::table('users')->where("api_key", $user->api_key)->first();
-        $message_id = request("message_id");
+        $message_id = request("message_id") != '' ? request("message_id") : request()->segment(3);
         if($message_id == ''){
             $data = [
                 "data" => "The request body is not a valid JSON string",
