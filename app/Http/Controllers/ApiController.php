@@ -464,84 +464,21 @@ class ApiController extends Controller {
             "status" => "error"
         ];
         echo die(json_encode($status));
-
-/*
-        // 200	OK
-
-        {
-        "data": {
-            "can_be_polled": false,
-            "contact": "+18005550100",
-            "content": "This is a sample text message",
-            "created_at": "2022-06-05T14:26:02.302718+03:00",
-            "delivered_at": "2022-06-05T14:26:09.527976+03:00",
-            "expired_at": "2022-06-05T14:26:09.527976+03:00",
-            "failed_at": "2022-06-05T14:26:09.527976+03:00",
-            "failure_reason": "UNKNOWN",
-            "id": "32343a19-da5e-4b1b-a767-3298a73703cb",
-            "last_attempted_at": "2022-06-05T14:26:09.527976+03:00",
-            "max_send_attempts": 1,
-            "order_timestamp": "2022-06-05T14:26:09.527976+03:00",
-            "owner": "+18005550199",
-            "received_at": "2022-06-05T14:26:09.527976+03:00",
-            "request_received_at": "2022-06-05T14:26:01.520828+03:00",
-            "scheduled_at": "2022-06-05T14:26:09.527976+03:00",
-            "send_attempt_count": 0,
-            "send_time": 133414,
-            "sent_at": "2022-06-05T14:26:09.527976+03:00",
-            "status": "pending",
-            "type": "mobile-terminated",
-            "updated_at": "2022-06-05T14:26:10.303278+03:00",
-            "user_id": "WB7DRDWrJZRGbYrv2CKGkqbzvqdC"
-        },
-        "message": "item created successfully",
-        "status": "success"
-        }
-        // 400	Bad Request
-
-        {
-        "data": "The request body is not a valid JSON string",
-        "message": "The request isn't properly formed",
-        "status": "error"
-        }
-        //401	Unauthorized
-
-        {
-        "data": "Make sure your API key is set in the [X-API-Key] header in the request",
-        "message": "You are not authorized to carry out this request.",
-        "status": "error"
-        }
-        //404	Not Found
-
-        {
-        "message": "cannot find message with ID [32343a19-da5e-4b1b-a767-3298a73703ca]",
-        "status": "error"
-        }
-        422	- Unprocessable Entity
-
-        {
-        "data": {
-            "additionalProp1": [
-            "string"
-            ],
-            "additionalProp2": [
-            "string"
-            ],
-            "additionalProp3": [
-            "string"
-            ]
-        },
-        "message": "validation errors while sending message",
-        "status": "error"
-        }
-        // 500	Internal Server Error
-
-        {
-        "message": "We ran into an internal error while handling the request.",
-        "status": "error"
-        }
     }
-*/
+
+    public function send_sms(){
+        // initialize guzzle client https://github.com/guzzle/guzzle
+        $apiKey = "PYXf934Tpyg4PF6du9F1O7wpFpz1e83dQpJzGZ293HVuQYcLrO6OFAP1K6ljn4K-";
+
+        $dd =  Http::withHeaders([
+            'x-api-key' => $apiKey,
+            ])->post('https://api.httpsms.com/v1/messages/send', [
+                'content' => 'API This is a sample text message - ALBO',
+                'from'    => request('from'),
+                'to'      => request('to')
+            ]);
+
+            echo $dd; 
     }
 
     public function billing($var = null)
@@ -606,6 +543,8 @@ class ApiController extends Controller {
             }
         */
     }
+
+
 
 
 }

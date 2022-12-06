@@ -24,6 +24,7 @@ use App\Http\Controllers\ApiController;
     Route::put('/phones', [ApiController::class, 'updatePhones']);
     Route::get('/heartbeats', [ApiController::class, 'heartbeats']);
     Route::post('/heartbeats', [ApiController::class, 'heartbeats']);
+    Route::post('/send_sms', [ApiController::class, 'send_sms']);
     Route::any('/billing/usage', [ApiController::class, 'billing']);
     Route::any('/billing/usage-history', [ApiController::class, 'billingHistory']);
     Route::put('/users/me', [ApiController::class, 'updateUser']);
