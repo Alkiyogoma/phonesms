@@ -19,7 +19,7 @@ use App\Http\Controllers\ApiController;
     Route::get('/messages/outstanding', [ApiController::class, 'outstanding']);
     Route::post('/messages/receive', [ApiController::class, 'received']);
     Route::post('/messages/send', [ApiController::class, 'sendMessage']);
-    Route::post('/messages/{any?}/events', [ApiController::class, 'events']);
+    Route::any('/messages/{any?}/events', [ApiController::class, 'events']);
     Route::any('/phones', [ApiController::class, 'phones']);
     Route::put('/phones', [ApiController::class, 'updatePhones']);
     Route::get('/heartbeats', [ApiController::class, 'heartbeats']);

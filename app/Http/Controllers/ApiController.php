@@ -31,7 +31,7 @@ class ApiController extends Controller {
         if($message){
             $users = array();
             $message = DB::table('message')->where("id", $id)->first();
-            
+
             $adata = [
                 "id" =>  $message->id,
                 "owner" =>  $message->owner,
@@ -312,7 +312,7 @@ class ApiController extends Controller {
             DB::table('message')->where("id", $message_id)->update(["status" => request('event_name'), "failure_reason" => request("reason"), "scheduled_at" => date("Y-m-d H:i:s")]);
                 $users['data'] = $message;
                 $status = array(
-                    "message" => "user fetched successfully",
+                    "message" => "Message Updated successfully",
                     "status" => "success"
                 );
                 echo die(json_encode(array_merge($users, $status)));
