@@ -14,9 +14,10 @@ class ApiController extends Controller {
         // Check if User Exists
         $user = $this->AuthValidate($request);
         $user = DB::table('users')->where("api_key", $user->api_key)->first();
+        $id = Str::uuid();
 
         $message = Message::create([
-            'id' => Str::uuid(),
+            'id' => $id,
             'contact' => "+".request('to'),
             'content' => request('content'),
             'failure_reason' => 'failure_reason',
@@ -29,33 +30,35 @@ class ApiController extends Controller {
         ]);
         if($message){
             $users = array();
+            $message = DB::table('message')->where("id", $id)->first();
+            
             $adata = [
-                      "can_be_polled" => false,
-                      "contact" => $message->contact,
-                      "content" => $message->content,
-                      "created_at" => $message->created_at,
-                      "delivered_at" => $message->created_at,
-                      "expired_at" => $message->created_at,
-                      "failed_at" => $message->created_at,
-                      "failure_reason" => "UNKNOWN",
-                      "id" => $message->id,
-                      "last_attempted_at" => $message->created_at,
-                      "max_send_attempts" => 1,
-                      "order_timestamp" => $message->created_at,
-                      "owner" => $message->owner,
-                      "received_at" => $message->created_at,
-                      "request_received_at" => $message->created_at,
-                      "scheduled_at" => $message->created_at,
-                      "send_attempt_count" => 0,
-                      "send_time" => 133414,
-                      "sent_at" => $message->created_at,
-                      "status" => "pending",
-                      "type" => "mobile-terminated",
-                      "updated_at" => $message->updated_at,
-                      "user_id" => $user->id
+                "id" =>  $message->id,
+                "owner" =>  $message->owner,
+                "user_id" => $user->id,
+                "contact" => $message->contact,
+                "content" => $message->content,
+                "type" => "mobile-terminated",
+                "status" => "pending",
+                "send_time" => null,
+                "request_received_at" => date('Y-m-d H:i:s'),
+                "created_at" => date('Y-m-d H:i:s'),
+                "updated_at" => date('Y-m-d H:i:s'),
+                "order_timestamp" => date('Y-m-d H:i:s'),
+                "last_attempted_at" => null,
+                "scheduled_at" => null,
+                "sent_at" => null,
+                "delivered_at" => null,
+                "expired_at" => null,
+                "failed_at" => null,
+                "can_be_polled"=>false,
+                "send_attempt_count" => 0,
+                "max_send_attempts" => 2,
+                "received_at" => null,
+                "failure_reason" => null
             ];
             $success = [
-                    "message" => "item created successfully",
+                    "message" => "Message sent successfully",
                     "status" => "success"
             ];
             $users['data'] = $adata;
