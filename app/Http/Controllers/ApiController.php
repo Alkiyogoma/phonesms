@@ -337,7 +337,31 @@ class ApiController extends Controller {
 
         if(!empty($message)){
             DB::table('message')->where("id", $message_id)->update(["status" => request('event_name'), "failure_reason" => request("reason"), "scheduled_at" => date("Y-m-d H:i:s")]);
-                $users['data'] = $message;
+                $users['data'] = [
+                "id" => $message->id,
+                "owner" => $message->owner,
+                "user_id" => $message->user_id,
+                "contact" => $message->contact,
+                "content" => $message->content,
+                "type" => "mobile-terminated",
+                "status" => 'pending',
+                "send_time" => $message->send_time,
+                "request_received_at" => $message->request_received_at,
+                "created_at" => $message->created_at,
+                "updated_at" => $message->updated_at,
+                "order_timestamp" => $message->order_timestamp,
+                "last_attempted_at" =>$message->last_attempted_at,
+                "scheduled_at" => $message->scheduled_at,
+                "sent_at" => $message->delivered_at,
+                "delivered_at" => $message->delivered_at,
+                "expired_at" => null,
+                "failed_at" => null,
+                "can_be_polled" => false,
+                "send_attempt_count" => 1,
+                "max_send_attempts" => 2,
+                "received_at" => null,
+                "failure_reason" => null
+                ];
                 $status = array(
                     "message" => "Message Updated successfully",
                     "status" => "success"
