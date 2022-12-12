@@ -31,7 +31,7 @@
       <!-- Desktop sidebar -->
       <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="/">
+          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{ url('/') }}">
             Albogast D, 
           </a>
           <ul class="mt-6">
@@ -39,7 +39,7 @@
            
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/dashboard"
+                href="{{ url('dashboard') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -63,7 +63,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/forms"
+                href="{{ url('forms') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -85,7 +85,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/reports"
+                href="{{ url('reports') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -107,7 +107,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/charts"
+                href="{{ url('charts') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -130,7 +130,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/users"
+                href="{{ url('users') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -146,13 +146,13 @@
                     d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                   ></path>
                 </svg>
-                <span class="ml-4">Buttons</span>
+                <span class="ml-4">Users</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/reports"
+                href="{{ url('reports') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -168,13 +168,13 @@
                     d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                   ></path>
                 </svg>
-                <span class="ml-4">Modals</span>
+                <span class="ml-4">Reports</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/tables"
+                href="{{ url('users') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -324,7 +324,7 @@
               <!-- text-gray-800 dark:text-gray-100 -->
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/"
+                href="{{ url('/') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -347,7 +347,7 @@
           <ul>
             <li class="relative px-6 py-3">
               <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/forms">
+                href="{{ url('forms') }}">
                 <svg
                   class="w-5 h-5"
                   aria-hidden="true"
@@ -368,7 +368,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/reports"
+                href="{{ url('reports') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -390,7 +390,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../charts.html"
+                href="{{ url('forms') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -413,7 +413,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/users"
+                href="{{ url('users') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -429,13 +429,13 @@
                     d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                   ></path>
                 </svg>
-                <span class="ml-4">Buttons</span>
+                <span class="ml-4">Users</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/modals"
+                href="{{ url('modals') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -457,7 +457,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/tables"
+                href="{{ url('tables') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -768,7 +768,7 @@
                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                           ></path>
                         </svg>
-                        <span>Profile</span>
+                        <span> {{ Auth::User()->name }}</span>
                       </a>
                     </li>
                     <li class="flex">

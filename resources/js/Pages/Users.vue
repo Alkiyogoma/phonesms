@@ -58,7 +58,7 @@
                                 <td>
                                     <Link
                                         class="flex items-center px-4"
-                                        :href="`/user/${user.customer_id}/edit`"
+                                        :href="`/user/${user.id}/edit`"
                                         tabindex="-1"
                                         >Edit</Link
                                     >

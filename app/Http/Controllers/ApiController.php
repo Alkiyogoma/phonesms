@@ -228,12 +228,12 @@ class ApiController extends Controller {
    
         }
         $users = array();
-        $messages = DB::table('message')->where("id", $message_id)->get();
+        $messages = DB::table('message')->where("id", $message_id)->first();
 
-        if(count($messages) > 0){
+        if(!empty($messages)){
             $users['data'] = $messages;
             $status = array(
-                "message" => "user fetched successfully",
+                "message" => " Message Fetched successfully",
                 "status" => "success"
             );
             echo die(json_encode(array_merge($users, $status)));
