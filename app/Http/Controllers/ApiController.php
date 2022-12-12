@@ -25,7 +25,7 @@ class ApiController extends Controller {
             'order_timestamp' => date('Y-m-d H:i:s'),
             'owner' => "+".request('from'),
             'status' => 'pending',
-            'user_id' => $user->user_id,
+            'user_id' => $user->id,
             "type" => "mobile-terminated",
         ]);
         if($message){
@@ -195,12 +195,39 @@ class ApiController extends Controller {
         $users = array();
         $messages = DB::table('message')->where("owner", $owner)->where('contact', $contact)->get();
         if(count($messages) > 0){
-            $users['data'] = $messages;
-            $status = array(
-                "message" => "user fetched successfully",
+            $adata = [               
+                'data' =>  DB::table('message')->where("owner", $owner)->where('contact', $contact)->get()->map(function ($message) {
+                    return [
+                    "id" =>  $message->id,
+                    "owner" =>  $message->owner,
+                    "user_id" => $message->user_id,
+                    "contact" => $message->contact,
+                    "content" => $message->content,
+                    "type" => "mobile-terminated",
+                    "status" => $message->status,
+                    "send_time" => $message->content,
+                    "request_received_at" => $message->request_received_at,
+                    "created_at" => $message->created_at,
+                    "updated_at" => $message->updated_at,
+                    "order_timestamp" => $message->order_timestamp,
+                    "last_attempted_at" => $message->last_attempted_at,
+                    "scheduled_at" => $message->scheduled_at,
+                    "sent_at" => $message->sent_at,
+                    "delivered_at" => $message->delivered_at,
+                    "expired_at" => null,
+                    "failed_at" => null,
+                    "can_be_polled" => true,
+                    "send_attempt_count" => 1,
+                    "max_send_attempts" => 2,
+                    "received_at" => null,
+                    "failure_reason" => null
+                ];
+            }),
+                "message" => "fetched ".count($messages)." messages",
                 "status" => "success"
-            );
-            echo die(json_encode(array_merge($users, $status)));
+        ];
+       
+            echo die(json_encode($adata));
         }else{
             $data = [
                 "data" => "The request body is empty no messages between these two numbers".$owner .' - '. $contact,
