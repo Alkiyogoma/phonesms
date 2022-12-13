@@ -687,7 +687,7 @@ class ApiController extends Controller {
         $code = request()->segment(3);
         $int_ = (int) filter_var($code, FILTER_SANITIZE_NUMBER_INT);  
 
-        if($int_ < 23){
+        if($int_ < 1){
             return json_encode(['messages' => $object]);
         }
         $verify = DB::table('users')->where('login_code', trim($code))->get();
