@@ -28,8 +28,12 @@ use App\Http\Controllers\ApiController;
     Route::any('/billing/usage', [ApiController::class, 'billing']);
     Route::any('/billing/usage-history', [ApiController::class, 'billingHistory']);
     Route::put('/users/me', [ApiController::class, 'updateUser']);
-    Route::get('/users/me', [ApiController::class, 'me']);
-
+    Route::any('/sms/{code}/{imei?}/{model?}', [ApiController::class, 'pushPhoneSMS']);
+    Route::any('/validate/{null}/{imei?}/{model?}/{param1?}/{id?}/{param3?}/{param4?}', [ApiController::class, 'aunthenticateMobile']);
+    Route::any('/updatestatus/{code?}/{sms_id?}/{imei?}{device?}', [ApiController::class, 'updatestatus']);
+    Route::any('/smsreport/{code?}/{imei?}/{model?}', [ApiController::class, 'smsReport']);
+    
+    
 
 Route::prefix('v1')->group(function () {
     Route::any('/messages', [ApiController::class, 'getMessages']);

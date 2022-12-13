@@ -17,7 +17,7 @@
                                 <th scope="col">City</th>
                                 <th scope="col">County</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">Join Date</th>
+                                <th scope="col">Joined</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

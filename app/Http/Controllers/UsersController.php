@@ -20,7 +20,10 @@ class UsersController extends Controller
                 return [
                     'id' => $user->id,
                     'name' => $user->name,
+                    'phone' => $user->phone,
+                    'api_key' => $user->api_key,
                     'email' => $user->email,
+                    'created_at' => $user->created_at,
                     'edit_url' => URL::route('users.edit', $user),
                 ];
             }),

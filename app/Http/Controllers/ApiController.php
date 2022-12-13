@@ -644,4 +644,175 @@ class ApiController extends Controller {
         
         }
         
+        public function verifySchool()
+        {
+           $code = request('code');
+           $verify = DB::table('admin.school_keys')->where('schema_name', $code)->first();
+           if (!empty($verify)) {
+              $school = DB::table('admin.clients')->join('admin.all_setting','admin.all_setting.schema_name','=','admin.clients.username')
+              ->select('admin.clients.name','admin.clients.address','admin.clients.address','admin.clients.lat','admin.clients.long','admin.all_setting.photo')
+              ->where('admin.clients.username', $verify->schema_name)->first();
+               
+                $logo = $this->imageUrl($school->photo);
+                $status = 1;
+                $data = ['key'=>$code,'school_name' => $school->name,'location' => $school->address,'location' => $school->address,'latitude'=>$school->lat,'longitude'=>$school->long,'logo'=>$logo];
+            } else {
+                $status = 0;
+                $data = [];
+            }
+           echo json_encode(['data' => [['status' => $status, 'data'=>$data]]]);
+        }
+
+
+    // function to verify key for attendance machine
+    public function verifyKey()
+    {
+        $code = request('code');
+        $verify = DB::table('admin.school_keys')->where('schema_name', $code)->first();
+        if (!empty($verify)) {
+             $school = DB::table('admin.clients')->where('username', $verify->schema_name)->first();
+             $school_name = $school->name;
+             $success = 1;
+        } else {
+            $school_name = '';
+            $success = 0;
+        }
+        echo json_encode(['data' => [['success' => $success, 'school_name' => $school_name]]]);
+    }
+
+    
+    private function resendNonDelivered($value)
+    {
+        $pending = DB::select("select a.phone_number as phone,  '" . $value->schema_name . "'||a.sms_id as id, "
+            . " a.body from " . $value->schema_name . ".sms a where type <>1 and status =1 limit 5 ");
+        $object = [];
+        if (!empty($pending)) {
+            foreach ($pending as $message) {
+                array_push($object, (array) $message);
+
+                $id = (int) str_replace($value->schema_name, NULL, $message->id);
+                DB::table($value->schema_name . ".sms")->where('sms_id', $id)->update([
+                    'status' => 2,
+                    //                             'return_code' => 'pushed to be sent', 
+                    'updated_at' => 'now()'
+                ]);
+            }
+        }
+        return json_encode(['messages' => $object]);
+    }
+
+    public function pushPhoneSMS()
+    {
+        $object = [];
+        $code = request()->segment(3);
+        $int_ = (int) filter_var($code, FILTER_SANITIZE_NUMBER_INT);  
+
+        if($int_ < 23){
+            return json_encode(['messages' => $object]);
+        }
+        $verify = DB::table('admin.school_keys')->where('api_key', trim($code))->get();
+        $bot = new \App\Http\Controllers\Communication\WhatsAppBot();
+
+        if (count($verify) > 0) {
+            foreach ($verify as $value) {
+                $setting = DB::table('admin.all_setting')->where('schema_name', $value->schema_name)->first();
+                if (!empty($setting)) {
+                    $schema = $value->schema_name == 'public' ? 'SHULESOFT' : strtoupper($value->schema_name);
+                    $link = $value->schema_name == 'public' ? 'shulesoft.com' : $value->schema_name . '.shulesoft.com';
+                    $messages = DB::select("select a.phone_number as phone,  '" . $value->schema_name . "'||a.sms_id as id, " . " '" . $schema . ": '||a.body || '" . chr(10) . " School Link > https://" . $link . "' as body, a.sent_from from " . $value->schema_name . ".sms a where status = 0 order by priority DESC limit 30");
+
+                    if (count($messages) > 0) {
+                        foreach ($messages as $message) {
+                            $id = (int) str_replace($value->schema_name, NULL, $message->id);
+
+                                array_push($object, (array) $message);
+                       
+                            DB::table($value->schema_name . ".sms")->where('sms_id', $id)->update([
+                                'status' => 1,
+                                'return_code' => 'pushed to be sent',
+                                'updated_at' => 'now()'
+                            ]);
+                        }
+                        DB::table('admin.school_keys')->where('api_key', trim($code))->update(['last_active' => 'now()']);
+                    } else {
+                        //wait for 3sec then check empty non delivered
+                          sleep(3);
+                         return $this->resendNonDelivered($value);
+                    }
+                }
+            }
+        } else {
+            // array_push($object, ['phone' => '0692321322', 'body' => 'Invalid Code supplied ('.$code.')', 'id' => 1, 'code' => $code]);
+        }
+        return json_encode(['messages' => $object]);
+    }
+
+
+    public function aunthenticateMobile()
+    {
+        $code = request()->segment(3);
+        $skema='public';
+        $verify = DB::table('admin.school_keys')->where('api_key', $code)->first();
+        if (!empty($verify)) {
+            DB::table('admin.school_keys')->where('api_key', $code)->update([
+                'last_active' => 'now()'
+            ]);
+            $status = 1;
+            $skema=$verify->schema_name;
+        } else {
+            $status = 0;
+            $code = '';
+            $skema='';
+        }
+        echo json_encode(['data' => [['code' => $code, 'status' => $status,'skema'=>$skema]]]);
+        echo json_encode(['data' => [['success' => 1]]]);
+    }
+
+    public function updatestatus()
+    {
+        $code = request()->segment(3);
+        $sms_id = request()->segment(4);
+        $ime = request()->segment(5);
+        $verify = DB::table('admin.school_keys')->where('api_key', trim($code))->get();
+        $int_ = (int) filter_var($sms_id, FILTER_SANITIZE_NUMBER_INT);  
+
+        if (count($verify) > 0 && $int_ > 0) {
+                    
+            $int = (int) filter_var($sms_id, FILTER_SANITIZE_NUMBER_INT);  
+            $schema =  str_replace($int, '', $sms_id); 
+            $check_schema = DB::table('admin.all_setting')->where('schema_name', $schema)->first();
+
+                if (!empty($check_schema) && $int > 0) {
+                    DB::table($schema . ".sms")->where('sms_id', $int)->update([
+                        'status' => 2,
+                        'updated_at' => 'now()'
+                    ]);
+                }
+            }
+        
+        DB::table('admin.school_keys')->where('api_key', trim($code))->update(['last_active' => 'now()']);
+        echo json_encode(['reports' => [['code' => $code, 'status' => $ime]]]);
+    }
+
+    public function smsReport()
+    {
+        $code = request()->segment(3);
+        $verify = DB::table('admin.school_keys')->where('api_key', $code)->get();
+        if (!empty($verify)) {
+            $sent_sms = 0;
+            $pending_sms = 0;
+            foreach ($verify as $value) {
+                $check_schema = DB::table('admin.all_setting')->where('schema_name', $value->schema_name)->first();
+            if(!empty($check_schema)){
+                $sent_sms += DB::table($value->schema_name . ".sms")->where('status', 1)->count();
+                $pending_sms += DB::table($value->schema_name . ".sms")->where('status', 0)->count();
+                }
+            }
+        } else {
+            $sent_sms = 0;
+            $pending_sms = 0;
+        }
+        echo json_encode(['reports' => [['sent' => $sent_sms, 'pending' => $pending_sms]]]);
+    }
+
     }

@@ -39,15 +39,15 @@ Route::middleware('auth')->get('/users', function () {
     return Inertia::render('Users', [
         'users' => \App\Models\User::all()->map(function ($user) {
             return [
-                'store_id' => $user->store_id,
-                'customer_id' => $user->customer_id,
-                'first_name' => $user->first_name,
-                'last_name' => $user->last_name,
+                'id' => $user->user_id,
+                'customer_id' => $user->id,
+                'first_name' => $user->name,
+                'last_name' => $user->api_key,
                 'email' => $user->email,
-                'address_id' => $user->address,
+                'phone' => $user->phone,
                 'active' => $user->active,
-                'create_date' => $user->create_date,
-                'last_update' => $user->last_update,
+                'create_date' => $user->create_at,
+                'last_update' => $user->updated_at,
                 'edit_url' => url('users.edit', $user),
             ];
         }),
