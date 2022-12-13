@@ -707,7 +707,7 @@ class ApiController extends Controller {
                             DB::table("message")->where('message_id', $id)->update([
                                 'sms_status' => 1,
                                 'failure_reason' => 'pushed to be sent',
-                                'updated_at' => 'now()'
+                                "updated_at" =>   date("Y-m-d H:i:s"),
                             ]);
                         }
                     } else {
@@ -730,7 +730,7 @@ class ApiController extends Controller {
         $verify = DB::table('users')->where('login_code', $code)->first();
         if (!empty($verify)) {
             DB::table('phones')->where('user_id', $verify->id)->update([
-                'updated_at' => 'now()'
+                "updated_at" =>   date("Y-m-d H:i:s"),
             ]);
             $status = 1;
         } else {
@@ -758,7 +758,7 @@ class ApiController extends Controller {
                 if ($int > 0) {
                     DB::table("message")->where('message_id', $int)->update([
                         'sms_status' => 2,
-                        'updated_at' => 'now()'
+                        "updated_at" =>   date("Y-m-d H:i:s"),
                     ]);
                 }
             }
