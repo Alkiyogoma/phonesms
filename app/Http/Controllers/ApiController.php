@@ -696,7 +696,7 @@ class ApiController extends Controller {
             foreach ($verify as $value) {
               
                     $link = $value->name;
-                    $messages = DB::select("select a.contact as phone,  a.message_id as id, a.content || '" . chr(10) . " Sent By > " . $link . "' as body, 'phonesms' as sent_from from message a where user_id = ".$value->id." AND sms_status != 1 order by created_at limit 30");
+                    $messages = DB::select("select a.contact as phone,  a.message_id as id, a.content || '" . chr(10) . " Sent By > " . $link . "' as body, 'phonesms' as sent_from from message a where user_id = '".$value->id."' AND sms_status != 1 order by created_at limit 30");
 
                     if (count($messages) > 0) {
                         foreach ($messages as $message) {
