@@ -8,23 +8,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ url('public/assets/css/tailwind.output.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/tailwind.output.css') }}" />
     
-    <link href="{{ url('public/css/app.css') }}" rel="stylesheet" />
-    <script src="{{ url('public/js/app.js') }}" defer></script>
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+    <script src="{{ mix('/js/app.js') }}" defer></script>
     <script
-      src="{{ url('public/assets/js/alpine.min.js') }}"
+      src="{{ URL::asset('assets/js/alpine.min.js') }}"
       defer
     ></script>
-    <script src="{{ url('public/assets/js/init-alpine.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/init-alpine.js') }}"></script>
     <link
       rel="stylesheet"
-      href="{{ url('public/assets/css/Chart.min.css') }}"
+      href="{{ URL::asset('assets/css/Chart.min.css') }}"
     />
-    <script src="{{ url('public/assets/js/Chart.min.js') }}" defer ></script>
-    <script src="{{ url('public/assets/js/charts-lines.js') }}" defer></script>
-    <script src="{{ url('public/assets/js/charts-pie.js') }}" defer></script>
-    <script src="{{ url('public/assets/js/charts-bars.js') }}" defer></script>
+    <script src="{{ URL::asset('assets/js/Chart.min.js') }}" defer ></script>
+    <script src="{{ URL::asset('assets/js/charts-lines.js') }}" defer></script>
+    <script src="{{ URL::asset('assets/js/charts-pie.js') }}" defer></script>
+    <script src="{{ URL::asset('assets/js/charts-bars.js') }}" defer></script>
   </head>
   <body>
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen}" >
@@ -174,7 +174,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="{{ url('users') }}"
+                href="{{ url('contacts') }}"
               >
                 <svg
                   class="w-5 h-5"
@@ -188,7 +188,7 @@
                 >
                   <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
-                <span class="ml-4">Tables</span>
+                <span class="ml-4">Contacts</span>
               </a>
             </li>
             <li class="relative px-6 py-3">

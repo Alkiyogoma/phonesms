@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
 class PasswordReset extends Model
 {
 	protected $table = 'password_resets';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $hidden = [

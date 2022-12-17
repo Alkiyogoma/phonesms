@@ -60,7 +60,7 @@
                                 <td>
                                     <Link
                                         class="flex items-center px-4"
-                                        :href="`/phonesms/user/${user.id}/edit`"
+                                        :href="`/user/${user.id}/edit`"
                                         tabindex="-1"
                                         >Edit</Link
                                     >

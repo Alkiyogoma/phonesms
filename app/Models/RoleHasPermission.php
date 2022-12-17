@@ -22,8 +22,13 @@ use Illuminate\Database\Eloquent\Model;
 class RoleHasPermission extends Model
 {
 	protected $table = 'role_has_permissions';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
+	
+	protected $fillable = [
+		'permission_id',
+		'role_id'
+	];
 
 	protected $casts = [
 		'permission_id' => 'int',

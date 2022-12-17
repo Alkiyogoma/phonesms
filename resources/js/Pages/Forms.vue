@@ -5,10 +5,11 @@
             >
               Forms
             </h2>
+            <Head title="Contacts" />
             <!-- CTA -->
             <Link
               class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-              href="/phonesms/dashboard"
+              href="/dashboard"
             >
               <div class="flex items-center">
                 <svg
@@ -109,7 +110,7 @@
                   rows="3"
                   placeholder="Enter some long form content."
                 ></textarea>
-              </label>
+              </label> 
 
               <div class="flex mt-6 text-sm">
                 <label class="flex items-center dark:text-gray-400">
@@ -296,3 +297,15 @@
             </div>
           </div>
 </template>
+
+<script>
+import Nav from '../Shared/Nav.vue';
+import { Head, Link } from '@inertiajs/inertia-vue3'
+
+export default {
+    components: { Nav, Head },
+    props: {
+        user: Array
+    }
+};
+</script>

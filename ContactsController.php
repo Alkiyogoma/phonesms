@@ -2,39 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+use App\Models\client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
-class ContactsController extends Controller
+class clientsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Contacts/Index', [
+        return Inertia::render('clients/Index', [
             'filters' => Request::all('search', 'trashed'),
-            'contacts' => Auth::user()->account->contacts()
+            'clients' => Auth::user()->account->clients()
                 ->with('organization')
                 ->orderByName()
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()
-                ->through(fn ($contact) => [
-                    'id' => $contact->id,
-                    'name' => $contact->name,
-                    'phone' => $contact->phone,
-                    'city' => $contact->city,
-                    'deleted_at' => $contact->deleted_at,
-                    'organization' => $contact->organization ? $contact->organization->only('name') : null,
+                ->through(fn ($client) => [
+                    'id' => $client->id,
+                    'name' => $client->name,
+                    'phone' => $client->phone,
+                    'city' => $client->city,
+                    'deleted_at' => $client->deleted_at,
+                    'organization' => $client->organization ? $client->organization->only('name') : null,
                 ]),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Contacts/Create', [
+        return Inertia::render('clients/Create', [
             'organizations' => Auth::user()->account
                 ->organizations()
                 ->orderBy('name')
@@ -46,7 +46,7 @@ class ContactsController extends Controller
 
     public function store()
     {
-        Auth::user()->account->contacts()->create(
+        Auth::user()->account->clients()->create(
             Request::validate([
                 'first_name' => ['required', 'max:50'],
                 'last_name' => ['required', 'max:50'],
@@ -63,25 +63,25 @@ class ContactsController extends Controller
             ])
         );
 
-        return Redirect::route('contacts')->with('success', 'Contact created.');
+        return Redirect::route('clients')->with('success', 'client created.');
     }
 
-    public function edit(Contact $contact)
+    public function edit(client $client)
     {
-        return Inertia::render('Contacts/Edit', [
-            'contact' => [
-                'id' => $contact->id,
-                'first_name' => $contact->first_name,
-                'last_name' => $contact->last_name,
-                'organization_id' => $contact->organization_id,
-                'email' => $contact->email,
-                'phone' => $contact->phone,
-                'address' => $contact->address,
-                'city' => $contact->city,
-                'region' => $contact->region,
-                'country' => $contact->country,
-                'postal_code' => $contact->postal_code,
-                'deleted_at' => $contact->deleted_at,
+        return Inertia::render('clients/Edit', [
+            'client' => [
+                'id' => $client->id,
+                'first_name' => $client->first_name,
+                'last_name' => $client->last_name,
+                'organization_id' => $client->organization_id,
+                'email' => $client->email,
+                'phone' => $client->phone,
+                'address' => $client->address,
+                'city' => $client->city,
+                'region' => $client->region,
+                'country' => $client->country,
+                'postal_code' => $client->postal_code,
+                'deleted_at' => $client->deleted_at,
             ],
             'organizations' => Auth::user()->account->organizations()
                 ->orderBy('name')
@@ -91,9 +91,9 @@ class ContactsController extends Controller
         ]);
     }
 
-    public function update(Contact $contact)
+    public function update(client $client)
     {
-        $contact->update(
+        $client->update(
             Request::validate([
                 'first_name' => ['required', 'max:50'],
                 'last_name' => ['required', 'max:50'],
@@ -111,20 +111,20 @@ class ContactsController extends Controller
             ])
         );
 
-        return Redirect::back()->with('success', 'Contact updated.');
+        return Redirect::back()->with('success', 'client updated.');
     }
 
-    public function destroy(Contact $contact)
+    public function destroy(client $client)
     {
-        $contact->delete();
+        $client->delete();
 
-        return Redirect::back()->with('success', 'Contact deleted.');
+        return Redirect::back()->with('success', 'client deleted.');
     }
 
-    public function restore(Contact $contact)
+    public function restore(client $client)
     {
-        $contact->restore();
+        $client->restore();
 
-        return Redirect::back()->with('success', 'Contact restored.');
+        return Redirect::back()->with('success', 'client restored.');
     }
 }
