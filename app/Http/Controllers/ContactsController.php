@@ -61,6 +61,8 @@ class ContactsController extends Controller
 
     public function edit(Clients $client)
     {
+        $id = request()->segment(2);
+        $client = Clients::where('id', $id)->first();
         return Inertia::render('Contacts/Edit', [
             'contact' => [
                 'id' => $client->id,
@@ -71,7 +73,7 @@ class ContactsController extends Controller
                 'jod' => $client->jod,
                 'deleted_at' => $client->created_at,
             ],
-            'organizations' => Auth::User()->groups()
+            'groups' => Auth::User()->groups()
                 ->get()
                 ->map
                 ->only('id', 'name'),

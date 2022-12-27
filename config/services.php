@@ -23,6 +23,17 @@ return [
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
+    'github' => [
+        'client_id' => 'Iv1.c7f0a6b04d9a3fd6',
+        'client_secret' => '355f6ef3960ddfa40bf130e4deb239022dab4ccd',
+        'redirect' => 'http://localhost:8000/auth/callback',
+    ],
+
+    'google' => [
+        'client_id'     => '1019534134504-vgp0no6inkuvdgdhi11i7ihen02pfteg.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect'      =>  'http://localhost:8000/auth/googlecall'
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),

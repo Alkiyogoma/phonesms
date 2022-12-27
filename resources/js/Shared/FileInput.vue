@@ -1,16 +1,16 @@
 <template>
   <div>
-    <label v-if="label" class="form-label">{{ label }}:</label>
+    <label v-if="label" class="block text-sm"><span class="text-gray-700 dark:text-gray-400">{{ label }}:</span></label>
     <div class="form-input p-0" :class="{ error: errors.length }">
       <input ref="file" type="file" :accept="accept" class="hidden" @change="change" />
       <div v-if="!modelValue" class="p-2">
-        <button type="button" class="px-4 py-1 text-white text-xs font-medium bg-gray-500 hover:bg-gray-700 rounded-sm" @click="browse">Browse</button>
+        <button type="button" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" @click="browse">Browse</button>
       </div>
       <div v-else class="flex items-center justify-between p-2">
         <div class="flex-1 pr-1">
           {{ modelValue.name }} <span class="text-gray-500 text-xs">({{ filesize(modelValue.size) }})</span>
         </div>
-        <button type="button" class="px-4 py-1 text-white text-xs font-medium bg-gray-500 hover:bg-gray-700 rounded-sm" @click="remove">Remove</button>
+        <button type="button" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" @click="remove">Remove</button>
       </div>
     </div>
     <div v-if="errors.length" class="form-error">{{ errors[0] }}</div>

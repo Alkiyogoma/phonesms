@@ -5,7 +5,8 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use \App\Http\Controllers\UsersController;
 use \App\Http\Controllers\ContactsController;
-
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ Route::middleware('auth')->get('/', function () {
 });
 
 Route::middleware('auth')->get('/dashboard', function () {
-    return inertia('Dashboard');
+    return nertia('Dashboard');
 });
 
 Route::middleware('auth')->get('/reports', function () {
@@ -35,6 +36,58 @@ Route::middleware('auth')->get('/tables', function () {
 
 Route::middleware('auth')->get('/charts', function () {
     return inertia('Charts');
+});
+
+ 
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $githubUser = Socialite::driver('github')->user();
+    dd($githubUser);
+    $user = User::updateOrCreate([
+        'github_id' => $githubUser->id,
+    ], [
+        'name' => $githubUser->name,
+        'email' => $githubUser->email,
+        'username' => $githubUser->login,
+        'address' => $githubUser->location,
+        'avatar' => $githubUser->avatar_url,
+        'github_token' => $githubUser->token,
+        'github_refresh_token' => $githubUser->refreshToken,
+    ]);
+ 
+    Auth::login($user);
+
+    return redirect('/dashboard');
+
+});
+
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+
+Route::get('/auth/googlecall', function () {
+    $google = Socialite::driver('google')->user();
+    dd($google);
+    $user = User::updateOrCreate([
+        'github_id' => $google->id,
+    ], [
+        'name' => $google->name,
+        'email' => $google->email,
+        'username' => $google->login,
+        'address' => $google->location,
+        'avatar' => $google->avatar_url,
+        'github_token' => $google->token,
+        'github_refresh_token' => $google->refreshToken,
+    ]);
+ 
+    Auth::login($user);
+
+    return redirect('/dashboard');
+
 });
 
 Route::middleware('auth')->get('/users', function () {
